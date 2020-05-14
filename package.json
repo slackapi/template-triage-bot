@@ -1,10 +1,10 @@
 {
-  "name": "bolt-js-triage-bot",
+  "name": "template-triage-bot",
   "version": "1.0.1",
   "description": "Triage stats for Slack channels powered by Bolt for JS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marks/bolt-js-triage-bot"
+    "url": "https://github.com/slackapi/template-triage-bot"
   },
   "main": "app.js",
   "scripts": {

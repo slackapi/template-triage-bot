@@ -6,9 +6,9 @@ This repository has an [`app.json`](../app.json) ([learn more about this Heroku 
 
 ## Part 0: _Start_ to create a Heroku application from this template
 
-1. Head on over to https://heroku.com/deploy?template=https://github.com/marks/bolt-js-triage-bot or use the button below:
+1. Head on over to https://heroku.com/deploy?template=https://github.com/slackapi/template-triage-bot or use the button below:
     
-    [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/marks/bolt-js-triage-bot)
+    [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/slackapi/template-triage-bot)
 
 
 2. Enter an app name and  make sure you see the green text "**awesome-app-name-you-entered** is available". In this example, your application will ultimately be deployed to `awesome-app-name-you-entered.herokuapp.com` and we'll need that domain in a second. 

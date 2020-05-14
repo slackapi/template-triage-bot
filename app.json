@@ -1,7 +1,7 @@
 {
   "name": "bolt-js-triage-bot",
   "description": "Triage stats for Slack channels powered by Bolt for JS",
-  "repository": "https://github.com/marks/bolt-js-triage-bot",
+  "repository": "https://github.com/slackapi/template-triage-bot",
   "logo": "https://slack.dev/bolt-js/assets/bolt-favicon.png",
   "keywords": ["node", "Slack", "Bolt", "Javascript"],
   "env": {
