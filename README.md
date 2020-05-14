@@ -1,4 +1,4 @@
-# Triage Channel Stats w/ Bolt 2 & Shortcuts ⚡️ 
+# Triage Bot and Channel Stats w/ Bolt for JS & Shortcuts ⚡️ 
 
 ## Overview
 
