@@ -101,7 +101,7 @@ app.shortcut('triage_stats', async ({ ack, context, body }) => {
 })
 
 // Handle `view_submision` of modal we opened as a result of the `triage_stats` shortcut
-app.view('channel_selected', async ({ body, view, ack, client, context }) => {
+app.view('channel_selected', async ({ body, view, ack, client, logger, context }) => {
   // Acknowledge right away
   await ack()
 
@@ -203,11 +203,11 @@ app.view('channel_selected', async ({ body, view, ack, client, context }) => {
         thread_ts: msgWorkingOnIt.ts
       })
     } catch (err) {
-      console.error(err)
+      logger.error(err)
     }
   } catch (e) {
     // Log error to console
-    console.error(e)
+    logger.error(e)
 
     // Send error message to DM with the initiating user
     const msgError = await client.chat.postMessage({
@@ -231,7 +231,7 @@ app.view('channel_selected', async ({ body, view, ack, client, context }) => {
   }
 })
 
-app.event('app_home_opened', async ({ payload, context }) => {
+app.event('app_home_opened', async ({ payload, context, logger }) => {
   const userId = payload.user
 
   try {
@@ -243,7 +243,7 @@ app.event('app_home_opened', async ({ payload, context }) => {
       view: appHomeView(userId, triageConfig)
     })
   } catch (error) {
-    console.error(error)
+    logger.error(error)
   }
 })
 
