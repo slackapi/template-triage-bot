@@ -1,0 +1,34 @@
+{
+  "name": "bolt-js-triage-bot",
+  "description": "Triage stats for Slack channels powered by Bolt for JS",
+  "repository": "https://github.com/marks/bolt-js-triage-bot",
+  "logo": "https://slack.dev/bolt-js/assets/bolt-favicon.png",
+  "keywords": ["node", "Slack", "Bolt", "Javascript"],
+  "env": {
+    "SLACK_CLIENT_ID": {
+      "description": "Slack App Client ID (from your Slack app's Basic Information page)"
+    },
+    "SLACK_CLIENT_SECRET": {
+      "description": "Slack App Client Secret (from your Slack app's Basic Information page)"
+    },
+    "SLACK_SIGNING_SECRET": {
+      "description": "Slack App Signing Secret (from your Slack app's Basic Information page)"
+    },
+    "SLACK_BOT_SCOPES": {
+      "description": "Slack App Bot Scopes (comma separated, no spaces)",
+      "value": "channels:history,channels:join,channels:read,chat:write,commands,files:write"
+    }
+  },
+  "success_url": "/slack/install",
+  "addons": [
+    {
+      "plan": "mongolab:sandbox",
+      "as": "MONGODB"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "bolt-js-triage-bot",
+  "version": "1.0.1",
+  "description": "Triage stats for Slack channels powered by Bolt for JS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marks/bolt-js-triage-bot"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo '/!\\ Tests consists of just linting for now' && npm run lint",
+    "start": "node app.js",
+    "lint": "npx standard --fix",
+    "debug": "npx nodemon --inspect -r dotenv/config app.js"
+  },
+  "author": "Slack",
+  "license": "MIT",
+  "engines": {
+    "node": "11.0"
+  },
+  "dependencies": {
+    "@slack/bolt": "^2.0.1",
+    "@slack/oauth": "^1.0.0",
+    "@slack/web-api": "^5.8.1",
+    "cronstrue": "^1.94.0",
+    "json2csv": "^5.0.1",
+    "mongoose": "^5.9.13",
+    "node-cron": "^2.0.3",
+    "randomstring": "^1.1.5"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.3"
+  }
+}
