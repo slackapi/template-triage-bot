@@ -1,0 +1,8 @@
+# Node modules
+node_modules/
+
+# Environment variable files
+.env*
+!.env.example
+
+.DS_Store
