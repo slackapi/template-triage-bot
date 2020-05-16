@@ -1,4 +1,4 @@
-# Triage Channel Stats w/ Bolt 2 & Shortcuts ⚡️ 
+# Triage Bot and Channel Stats w/ Bolt for JS & Shortcuts ⚡️ 
 
 ## Overview
 
@@ -14,7 +14,7 @@ This application has a few entry points and features to help you keep track of r
 
 ## Steps to get your own app running:
 - Head over to [`docs/SETUP.md`](docs/SETUP.md) for steps to get your app running on a traditional server or your laptop
-- Check out [`docs/DEPLOY_Heroku.md`](docs/Deploy_Heroku.md) for instructions for deploying to Heroku, a platform-as-a-service, so you dont have to run anything locally.
+- Check out [`docs/DEPLOY_Heroku.md`](docs/DEPLOY_Heroku.md) for instructions for deploying to Heroku, a platform-as-a-service, so you dont have to run anything locally.
 
 ## Additional documentation
 Additional documentation is available in the `docs/` folder of this repository
