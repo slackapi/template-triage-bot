@@ -45,7 +45,7 @@ In your preferred web browser:
       - Optionally, choose to Always Show My Bot as Online
     - Under Show Tabs, toggle Home Tab on
 
-5. Go to **Manage Distribution** and activate public distribution
+5. If you plan to install your application to more than one workspace, go to **Manage Distribution** and activate public distribution
 
 6. Go back to your new app's **Basic Information** page. We'll need to grab values from it in the next part.
 
@@ -68,7 +68,16 @@ The following steps will use a combination of your server's command line and a w
 
 2. Run `npm install` to install code-level dependencies such as Bolt for Javascript, Mongoose, etc.
 
-3. Start your application with `npm start` or, if you're running locally, `npm run debug`
+3. Start your application! You have two options:
+    - `npm start` will start your application in normal mode
+    - `npm run debug` will start your application in debug / watch mode, powered by [Nodemon](https://nodemon.io/)
+
+    At this point, your application should be accessible at `https://your-host`.
+    
+    If you're using ngrok, you'll want to start your tunnel with `ngrok http 3000` (adding `-subdomain your-subdomain` if you have a paid Ngrok account)
+
+    You can verify that your server is up and accessible by going to `https://your-host/slack/install` in your browser. If you see an 'Add to Slack' Button, you are good to go!
+
 
 4. Now that your application is running, add your [Slack Events API](https://api.slack.com/events-api) subscriptions by going back to your app config and visiting the **Event Subscriptions** page.
     - Toggle "Enable Events" to "On"

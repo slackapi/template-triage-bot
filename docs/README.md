@@ -6,4 +6,3 @@ This directory contains the following additional documentation:
   - [DATA.md](DATA.md) - Information on data access, collection, and storage
   - [LIMITATIONS_CAVEATS.md](LIMITATIONS_CAVEATS.md) - Notes on known limitations and caveats
   - [SECURITY.md](SECURITY.md) - Notes on security including API tokens and scopes
-  - [ENHANCEMENTS_TODO.md](ENHANCEMENTS_TODO.md) - PRs welcome!
