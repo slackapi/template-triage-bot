@@ -68,7 +68,9 @@ The following steps will use a combination of your server's command line and a w
 
 2. Run `npm install` to install code-level dependencies such as Bolt for Javascript, Mongoose, etc.
 
-3. Start your application with `npm start` or, if you're running locally, `npm run debug`
+3. Start your application! You have two options:
+    - `npm start` will start your application in normal mode
+    - `npm run debug` will start your application in debug / watch mode, powered by [Nodemon](https://nodemon.io/)
 
 4. Now that your application is running, add your [Slack Events API](https://api.slack.com/events-api) subscriptions by going back to your app config and visiting the **Event Subscriptions** page.
     - Toggle "Enable Events" to "On"
