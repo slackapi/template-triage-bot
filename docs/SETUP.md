@@ -76,7 +76,7 @@ The following steps will use a combination of your server's command line and a w
     
     If you're using ngrok, you'll want to start your tunnel with `ngrok http 3000` (adding `-subdomain your-subdomain` if you have a paid Ngrok account)
 
-    You can that your server is up and accessible by going to `https://your-host/slack/install` in your browser. If you see an 'Add to Slack' Button, you are good to go!
+    You can verify that your server is up and accessible by going to `https://your-host/slack/install` in your browser. If you see an 'Add to Slack' Button, you are good to go!
 
 
 4. Now that your application is running, add your [Slack Events API](https://api.slack.com/events-api) subscriptions by going back to your app config and visiting the **Event Subscriptions** page.
