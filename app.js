@@ -9,7 +9,7 @@ const { InstallProvider } = require('@slack/oauth')
 // Our `helpers/db.js` file defines our database connection (powered by Mongoose)
 const { AuthedTeam } = require('./helpers/db')
 
-// We'll user randomstring to generate, well, random strings for our state store
+// We'll use the randomstring package to generate, well, random strings for our state store
 const { generate: randomStringGenerator } = require('randomstring')
 
 // =====================================
@@ -144,7 +144,7 @@ app.view('channel_selected', async ({ body, view, ack, client, logger, context }
       client
     )
 
-    // Use the enricMessages helper to enrich the messages we have
+    // Use a helper method to enrich the messages we have
     const allMessagesEnriched = filterAndEnrichMessages(allMessages, selectedChannelId, context.botId)
 
     // For each level, let's do some analysis!
