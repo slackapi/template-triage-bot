@@ -45,7 +45,7 @@ In your preferred web browser:
       - Optionally, choose to Always Show My Bot as Online
     - Under Show Tabs, toggle Home Tab on
 
-5. Go to **Manage Distribution** and activate public distribution
+5. If you plan to install your application to more than one workspace, go to **Manage Distribution** and activate public distribution
 
 6. Go back to your new app's **Basic Information** page. We'll need to grab values from it in the next part.
 
