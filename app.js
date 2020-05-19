@@ -9,7 +9,7 @@ const { InstallProvider } = require('@slack/oauth')
 // Our `helpers/db.js` file defines our database connection (powered by Mongoose)
 const { AuthedTeam } = require('./helpers/db')
 
-// We'll user randomstring to generate, well, random strings for our state store
+// We'll use the randomstring package to generate, well, random strings for our state store
 const { generate: randomStringGenerator } = require('randomstring')
 
 // =====================================
