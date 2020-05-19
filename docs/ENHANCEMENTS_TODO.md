@@ -8,7 +8,4 @@
 - [ ] Look into encrypting tokens
   - need to rework upserting as Mongo field encryption helpers dont seem to like that)
 - [ ] Unify/standardize logging (low priority; stdout should get slurped in most sensible deployment methods)
-- [x] Document deploying to Heroku - docs/DEPLOY_Heroku.md
-- [x] Begin to document data model(s) - docs/DATA.md
-- [x] Validate (local) setup instructions end-to-end - docs/SETUP.md
-- [x] Setup CI (for, at least, linting)
+- [ ] Improve UX by displaying _n_ days instead of _x_ hours when _x_ > 24
