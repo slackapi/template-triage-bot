@@ -3,8 +3,7 @@
 // =============================
 
 // Official Slack packages: Bolt for Javascript & OAuth helpers
-const { App, ExpressReceiver } = require('@slack/bolt')
-const { InstallProvider } = require('@slack/oauth')
+const { App } = require('@slack/bolt')
 
 // Our `helpers/db.js` file defines our database connection (powered by Mongoose)
 const { AuthedTeam } = require('./helpers/db')
@@ -17,7 +16,6 @@ const { generate: randomStringGenerator } = require('randomstring')
 // =====================================
 const triageConfig = require('./config')
 const modalViews = require('./views/modals.blockkit')
-const registerOAuthRoutes = require('./helpers/routes_oauth')
 const appHomeView = require('./views/app_home.blockkit')
 const { getAllMessagesForPastHours, filterAndEnrichMessages, messagesToCsv } = require('./helpers/messages')
 const { scheduleReminders, manuallyTriggerScheduledJobs } = require('./helpers/scheduled_jobs')
@@ -26,19 +24,28 @@ const { scheduleReminders, manuallyTriggerScheduledJobs } = require('./helpers/s
 // === Initialization/Configuration ===
 // ====================================
 
-// Create our own instance of the ExpressReceiver, which initializes an Express app
-const expressReceiver = new ExpressReceiver({
-  signingSecret: process.env.SLACK_SIGNING_SECRET
-})
-const expressApp = expressReceiver.app
-
-// Initialize slackInstaller OAuth helper from @slack/oauth package
-// (refer to https://github.com/slackapi/node-slack-sdk/tree/master/packages/oauth)
-const slackInstaller = new InstallProvider({
+// Initialize the Bolt app, including OAuth installer helpers
+// (refer to https://github.com/slackapi/bolt)
+const app = new App({
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
   clientId: process.env.SLACK_CLIENT_ID,
   clientSecret: process.env.SLACK_CLIENT_SECRET,
-  authVersion: 'v2',
   stateSecret: randomStringGenerator(),
+  scopes: process.env.SLACK_BOT_SCOPES,
+  installerOptions: {
+    authVersion: 'v2',
+    installPath: '/slack/install',
+    redirectUriPath: '/slack/oauth_redirect',
+    callbackOptions: {
+      success: (installation, metadata, req, res) => {
+        res.send(`Thank you for installing! <a href='slack://app?team=${installation.team.id}&id=${installation.appId}&tab=home'>Click here to visit the app in Slack!</a>`)
+      },
+      failure: (error, installOptions, req, res) => {
+        console.error(error, installOptions)
+        res.send("Uh oh, there was an error while installing. Sorry about that. <a href='/slack/install'>Please try again.</a>")
+      }
+    }
+  },
   installationStore: {
     storeInstallation: async installation => {
       // Create a teamData object with all the `installation` data but with id and name at the top level
@@ -56,32 +63,9 @@ const slackInstaller = new InstallProvider({
       const team = await AuthedTeam.findOne({ id: installQuery.teamId })
       return team._doc
     }
-  }
+  },
+  logLevel: 'DEBUG'
 })
-
-// Initialize the Bolt app
-// (refer to https://github.com/slackapi/bolt)
-// (notice that we don't need to pass the signing secret here- it's part of the expressReceiver instead)
-const app = new App({
-  receiver: expressReceiver,
-  logLevel: 'DEBUG',
-  authorize: async ({
-    teamId
-  }) => {
-    try {
-      const authorizeData = await slackInstaller.authorize({ teamId: teamId })
-      return authorizeData
-    } catch (e) {
-      console.error(e)
-      throw new Error('No matching authorizations.')
-    }
-  }
-})
-
-// ======================================================
-// === Define web routes for home page and OAuth flow ===
-// ======================================================
-registerOAuthRoutes(expressApp, slackInstaller) // (from helpers/web_routes.js)
 
 // =========================================================================
 // === Define Slack (Bolt) handlers for Slack functionality/interactions ===
