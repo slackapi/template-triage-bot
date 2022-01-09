@@ -48,20 +48,38 @@ const app = new App({
   },
   installationStore: {
     storeInstallation: async installation => {
-      // Create a teamData object with all the `installation` data but with id and name at the top level
-      let teamData = installation.team
-      teamData = Object.assign(teamData, installation)
-      delete teamData.team // we already have this information from the assign above
-      delete teamData.user.token // we dont want a user token, if the scopes are requested
+      if (installation.isEnterpriseInstall && installation.enterprise !== undefined) {
+        // This is an org level install
+        throw new Error("This app does not currently support Org Level installation");
+      }
 
-      // Do an upsert so that we always have just one document per team ID
-      await AuthedTeam.findOneAndUpdate({ id: teamData.id }, teamData, { upsert: true })
+      if (installation.team !== undefined) {
+        // single team install
+        // Create a teamData object with all the `installation` data but with id and name at the top level
+        let teamData = installation.team
+        teamData = Object.assign(teamData, installation)
+        delete teamData.team // we already have this information from the assign above
+        delete teamData.user.token // we dont want a user token, if the scopes are requested
 
-      return true
+        // Do an upsert so that we always have just one document per team ID
+        await AuthedTeam.findOneAndUpdate({ id: teamData.id }, teamData, { upsert: true })
+
+        return true;
+      }
+
+      throw new Error("Failed saving installation data");
     },
     fetchInstallation: async installQuery => {
-      const team = await AuthedTeam.findOne({ id: installQuery.teamId })
-      return team._doc
+      if (installQuery.isEnterpriseInstall && installQuery.enterpriseId !== undefined) {
+         // This is an org level install
+         throw new Error("This app does not currently support Org Level installation");
+      }
+
+      if (installQuery.teamId !== undefined) {
+        const team = await AuthedTeam.findOne({ id: installQuery.teamId })
+        return team._doc
+      }
+      throw new Error("Failed to fetch installation data");
     }
   },
   logLevel: 'DEBUG'

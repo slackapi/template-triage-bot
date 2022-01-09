@@ -19,7 +19,7 @@
     "node": "11.0"
   },
   "dependencies": {
-    "@slack/bolt": "^2.7.0",
+    "@slack/bolt": "^3.8.1",
     "cronstrue": "^1.94.0",
     "json2csv": "^5.0.1",
     "mongoose": "^5.11.18",
