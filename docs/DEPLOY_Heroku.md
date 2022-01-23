@@ -13,9 +13,7 @@ This repository has an [`app.json`](../app.json) ([learn more about this Heroku 
 
 2. Enter an app name and  make sure you see the green text "**awesome-app-name-you-entered** is available". In this example, your application will ultimately be deployed to `awesome-app-name-you-entered.herokuapp.com` and we'll need that domain in a second. 
 
-3. Note that there are a few Add-ons (all free) and Config Vars pre-configured for you.
-
-4. Before you can create the purple 'Deploy app', we need to create our Slack App and provide the last three Config Vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_SIGNING_SECRET`
+3. Before you can create the purple 'Deploy app', we need to create our Slack App and provide the last three Config Vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_SIGNING_SECRET`
 
 ## Part 1: Setup your Slack app 
 
