@@ -90,7 +90,7 @@ Finally, set the `MONGODB_URI` [Heroku environment variable](https://devcenter.h
 
 ## Part 4: Install and use your app
 
-1. You can now click 'Open app' from your Heroku app's dashboard or go directly to  [`https://awesome-app-name-you-entered.herokuapp.com/slack/install`](https://awesome-app-name-you-entered.herokuapp.com/slack/install) and click the 'Add to Slack' button. 
+1. It's time to install the app. Go directly to  [`https://awesome-app-name-you-entered.herokuapp.com/slack/install`](https://awesome-app-name-you-entered.herokuapp.com/slack/install) and click the 'Add to Slack' button. 
 
 2. Try out your freshly deployed app!
     1. Visit your app's App Home tab to see the current configuration (you can clone your Heroku git repo, edit `config.js`, and push your changes to Heroku to update your settings.)
