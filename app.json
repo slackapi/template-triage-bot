@@ -20,12 +20,6 @@
     }
   },
   "success_url": "/slack/install",
-  "addons": [
-    {
-      "plan": "mongolab:sandbox",
-      "as": "MONGODB"
-    }
-  ],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
