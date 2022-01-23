@@ -38,11 +38,13 @@ const app = new App({
     redirectUriPath: '/slack/oauth_redirect',
     callbackOptions: {
       success: (installation, metadata, req, res) => {
-        res.send(`Thank you for installing! <a href='slack://app?team=${installation.team.id}&id=${installation.appId}&tab=home'>Click here to visit the app in Slack!</a>`)
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(`Thank you for installing! <a href='slack://app?team=${installation.team.id}&id=${installation.appId}&tab=home'>Click here to visit the app in Slack!</a>`)
       },
       failure: (error, installOptions, req, res) => {
         console.error(error, installOptions)
-        res.send("Uh oh, there was an error while installing. Sorry about that. <a href='/slack/install'>Please try again.</a>")
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end("Uh oh, there was an error while installing. Sorry about that. <a href='/slack/install'>Please try again.</a>")
       }
     }
   },
