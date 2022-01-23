@@ -22,13 +22,13 @@
     "@slack/bolt": "^3.9.0",
     "cronstrue": "^1.94.0",
     "json2csv": "^5.0.1",
-    "mongoose": "^5.11.18",
+    "mongoose": "^6.1.7",
     "node-cron": "^2.0.3",
     "randomstring": "^1.1.5"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "eslint": "^7.0.0",
+    "eslint": "^8.7.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
