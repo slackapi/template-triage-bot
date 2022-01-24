@@ -11,9 +11,6 @@ const triageConfig = require('./../config')
 const { AuthedTeam } = require('./db')
 const { getAllMessagesForPastHours, filterAndEnrichMessages } = require('./messages')
 
-// Initialize a single instance of Slack Web API WebClient, without a token
-const client = new WebClient()
-
 const onCronTick = async function (reminderConfig) {
   const now = new Date()
   console.log('[node-cron] [onCronTick] ran ' + now.toLocaleString())
@@ -29,10 +26,10 @@ const onCronTick = async function (reminderConfig) {
     console.log(`Processing team ${team.id}`)
 
     try {
-      // Set the Slack Web API's client token to that of the team's
-      client.token = team.bot.token
+      // Initialize a Slack Web API WebClient, with the team's token
+      const client = new WebClient(team.bot.token)
 
-      // get a list of the channels the bot is in
+      // Get a list of the channels the bot is in
       const botsUserConversations = await client.users.conversations({
         exclude_archived: true,
         types: 'public_channel',
@@ -116,8 +113,6 @@ const onCronTick = async function (reminderConfig) {
     } catch (err) {
       console.error(`ERROR processing ${team.id}...`)
       console.error(err)
-    } finally {
-      client.token = null
     }
   }
 }

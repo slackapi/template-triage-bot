@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 // Connect to MongoDB
 mongoose.connect(
   process.env.MONGODB_URI,
-  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
+  { useNewUrlParser: true, useUnifiedTopology: true }
 )
 
 // Define a schema for AuthedTeam
