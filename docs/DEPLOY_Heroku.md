@@ -73,7 +73,7 @@ In a new tab, do the following. Be sure to replace `awesome-app-name-you-entered
 It's now time to configure your backend, powered by a MongoDB database. The application is set up to look for a [MongoDB connection string](https://docs.mongodb.com/manual/reference/connection-string/) stored in a `MONGODB_URI` [Heroku environment variable](https://devcenter.heroku.com/articles/config-vars).
 
 ### Heroku add-ons make it easy
-For the fastest setup, you can look for a Heroku Add-On for MongoDB by browsing the Add-ons marketplace [here](https://elements.heroku.com/addons).
+For the fastest setup, you can look for a Heroku Add-On for MongoDB by browsing the Add-ons marketplace [here](https://elements.heroku.com/search/addons?q=MongoDB).
 
 Once you add the add-on to your new app, Heroku will automatically set the `MONGODB_URI` environment variable.
 
