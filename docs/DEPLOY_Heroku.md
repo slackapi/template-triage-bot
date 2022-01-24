@@ -11,11 +11,9 @@ This repository has an [`app.json`](../app.json) ([learn more about this Heroku 
     [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/slackapi/template-triage-bot)
 
 
-2. Enter an app name and  make sure you see the green text "**awesome-app-name-you-entered** is available". In this example, your application will ultimately be deployed to `awesome-app-name-you-entered.herokuapp.com` and we'll need that domain in a second. 
+2. Enter an app name and make sure you see the green text "**awesome-app-name-you-entered** is available". In this example, your application will ultimately be deployed to `awesome-app-name-you-entered.herokuapp.com` and we'll need that domain in a second. 
 
-3. Note that there are a few Add-ons (all free) and Config Vars pre-configured for you.
-
-4. Before you can create the purple 'Deploy app', we need to create our Slack App and provide the last three Config Vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_SIGNING_SECRET`
+3. Before you can create the purple 'Deploy app', we need to create our Slack App and provide the last three Config Vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_SIGNING_SECRET`
 
 ## Part 1: Setup your Slack app 
 
@@ -61,7 +59,7 @@ In a new tab, do the following. Be sure to replace `awesome-app-name-you-entered
 
 2. Click the purple Deploy app button and wait a few moments
 
-3. Once you see 'Your app was successfully deployed.' resist the urge to click 'View' just yet. We have one more Slack app feature to enable.
+3. Once you see 'Your app was successfully deployed.' resist the urge to click 'View' just yet. Instead, click 'Manage app' where we will configure the database after the next step.
 
 4. Now that your application is running at https://awesome-app-name-you-entered.herokuapp.com, add your [Slack Events API](https://api.slack.com/events-api) subscriptions by going back to your app config and visiting the **Event Subscriptions** page.
     - Toggle "Enable Events" to "On"
@@ -70,12 +68,32 @@ In a new tab, do the following. Be sure to replace `awesome-app-name-you-entered
     - Under "Subscribe to bot events", add the `app_home_opened` event
     - Click Save Changes
 
-## Part 3: Install and use your app
+## Part 3: Set your MongoDB backend connection information
 
-1. You can now click 'View' from the Heroku 'Create New App' page or go directly to  [`https://awesome-app-name-you-entered.herokuapp.com/slack/install`](https://awesome-app-name-you-entered.herokuapp.com/slack/install) and click the 'Add to Slack' button. 
+It's now time to configure your backend, powered by a MongoDB database. The application is set up to look for a [MongoDB connection string](https://docs.mongodb.com/manual/reference/connection-string/) stored in a `MONGODB_URI` [Heroku environment variable](https://devcenter.heroku.com/articles/config-vars).
+
+### Heroku add-ons make it easy
+For the fastest setup, you can look for a Heroku Add-On for MongoDB by browsing the Add-ons marketplace [here](https://elements.heroku.com/search/addons?q=MongoDB).
+
+Once you add the add-on to your new app, Heroku will automatically set the `MONGODB_URI` environment variable.
+
+As of January 2022, there were no free MongoDB add-ons available on the Heroku add-ons marketplace.
+
+### MongoDB Atlas has a free offering
+If you're looking for an alternative option, you might consider MongoDB Atlas, MongoDB's cloud-hosted offering which has a free tier.
+
+To setup MongoDB Atlas to work with this repository, follow the [sign up flow for MongoDB Atlas](https://www.mongodb.com/atlas) and provision a cluster. Be sure to setup a user with read/write access to the your new database and [allow connections](https://docs.atlas.mongodb.com/security/ip-access-list/) to be initiated from any IP on the internet to connect to your database (0.0.0.0/0).
+
+Once your cluster is provisioned, retrieve your connection string by clicking "Connect", "Connect your application", and "Node.js" / "4.0 or later". You will be shown a connection string in the form of `mongodb+srv://<username>:<password>@<server>/<databaseName>?retryWrites=true&w=majority` or similar. Copy this string and insert your user's password and optionally update the database name.
+
+Finally, set the `MONGODB_URI` [Heroku environment variable](https://devcenter.heroku.com/articles/config-vars) to this value. Your application will automatically restart.
+
+## Part 4: Install and use your app
+
+1. It's time to install the app. Go directly to  [`https://awesome-app-name-you-entered.herokuapp.com/slack/install`](https://awesome-app-name-you-entered.herokuapp.com/slack/install) and click the 'Add to Slack' button. 
 
 2. Try out your freshly deployed app!
-    1. Visit your app's App Home tab to see the current configuration (you can edit `config.js` and restart the application to make changes)
+    1. Visit your app's App Home tab to see the current configuration (you can clone your Heroku git repo, edit `config.js`, and push your changes to Heroku to update your settings.)
     2. Execute your shortcut by entering "Show triage stats" in the quick switcher (CMD+k) or by using the lightning bolt ⚡️ symbol right below the message input field in Slack and filling out the form. You should receive a DM from the bot.
     3. Wait for the (by default) top-of-the-hour hourly update in any channel the bot has been invited to.
 

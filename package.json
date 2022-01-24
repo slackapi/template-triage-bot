@@ -16,7 +16,7 @@
   "author": "Slack",
   "license": "MIT",
   "engines": {
-    "node": "11.0"
+    "node": "12.x"
   },
   "dependencies": {
     "@slack/bolt": "^3.9.0",
