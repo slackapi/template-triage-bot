@@ -22,7 +22,7 @@
     "@slack/bolt": "^3.9.0",
     "cronstrue": "^1.94.0",
     "json2csv": "^5.0.1",
-    "mongoose": "^6.1.7",
+    "mongoose": "^6.12.0",
     "node-cron": "^2.0.3",
     "randomstring": "^1.1.5"
   },
