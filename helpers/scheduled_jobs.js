@@ -84,7 +84,7 @@ const onCronTick = async function (reminderConfig) {
         if (messagesFilteredForConfig.length === 0) {
           await client.chat.postMessage({
             channel: channel.id,
-            text: `:tada: Nice job, <#${channel.id}>!` +
+            text: `:tada: Nice job, <#${channel.id}>! ` +
               `There are ${messagesFilteredForConfig.length} messages from the past ${reminderConfig.hours_to_look_back} hours that are ` +
               `either ${levelEmojis.join(
                 '/'
